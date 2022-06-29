@@ -1,6 +1,7 @@
 u = untracked
 a = index added
 m = modified
+s = staged
 =======Config ac===============
 Git config --global user.name "raval darshan"
 Git config --global user.email "ravaldarshan237200@gmail.com"
@@ -17,6 +18,7 @@ git commit -m "first commit"
 Git status
 
 ============how to push code===============
+//Connecting git with remote repository
 git remote add origin https://github.com/mravarldarshan/agos-book-shop-store.git
 git branch -M master
 git push -u origin master
@@ -61,3 +63,24 @@ $ git push -u origin master
 
 ==========how to pull code===========
 $ git pull upstreram main
+
+git checkout yourbranch
+git pull origin develop
+
+git checkout develop
+git merge yourbranch
+git push -u origin develop
+
+============delate branch===========
+git branch -d branch-name
+git branch -D branch-name
+
+=============To delete remote branch===
+git push <remote_name> :<branch_name>  
+or
+git push <remote_name> --delete <branch_name>
+
+===============branch rename============
+git branch -m <newname>
+or
+git branch -m <oldname> <newname>
