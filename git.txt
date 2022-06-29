@@ -20,6 +20,7 @@ Git status
 git remote add origin https://github.com/mravarldarshan/agos-book-shop-store.git
 git branch -M master
 git push -u origin master
+git remote set-url origin (ssh uel) //set url in origin
 
 =============remove origin==================
 git remote rm origin
@@ -36,3 +37,22 @@ git diff --stage //it campare last comment
 mylogs.log //ignore files
 /mylogs.log //not ignore thos file who inside the folder
 ignore/  //ignore folder
+
+==============git branch==============
+git branch //view all branch
+git branch sub-branch // create branch
+git branch -b sub-branch // create branch & swich branch
+git checkout sub-branch //switched to branch
+
+==============merge project============
+git merge (branch name) 
+
+==============how to acsses privet repo====
+$ ssh-keygen -t ed25519 -C "ravaldarshan237200.com" //set email
+$ eval "$(ssh-agent -s)"  // to get agent pid
+$ ssh-add ~/.ssh/id_ed25519 //to add privet key in .ssh
+$ clip < ~/.ssh/id_ed25519.pub // to copy .ssh key
+
+git remote set-url origin (ssh uel) //set url in origin
+
+
