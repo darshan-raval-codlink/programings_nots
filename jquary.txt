@@ -1,0 +1,72 @@
+--Basic syntax is: $(selector).action()
+
+A $ sign to define/access jQuery
+A (selector) to "query (or find)" HTML elements
+A jQuery action() to be performed on the element(s)
+
+$(this).hide() - hides the current element.
+$("p").hide() - hides all <p> elements.
+$(".test").hide() - hides all elements with class="test".
+$("#test").hide() - hides the element with id="test".
+
+--jQuery Selectors
+1. #id Selector //$("#test")
+2.  .class Selector//$(".test")
+3. element Selector//element Selector
+
+--include js file in your page
+<script src="my_jquery_functions.js"></script>
+
+--jQuery Event
+Examples of events:
+Mouse                 	Keyboard 	Form           	Document/Window
+click	                keypress	submit	        load
+dblclick	                keydown	change	        resize
+mouseenter   	keyup	        focus (get_ focus)    	scroll
+mouseleave	   	blur	unload(loses focus)
+
+--jquery effect
+  1.Hide/Show/Toggle
+  2.jQuery Fading Methods
+     fadeIn()//I CAPITAL
+     fadeOut()//O CAPITAL
+     fadeToggle()//T CAPITAL
+     fadeTo()//T CAPITAL
+ 3.jQuery Sliding
+     slideDown()//D CAPITAL
+     slideUp()//U CAPITAL
+     slideToggle()//T CAPITAL
+ 4.jQuery Animations
+ 5.jQuery stop()
+--jquery html
+  1.Get Content
+     --jQuery DOM Manipulation
+          text() - Set of text  returns the text content of selected elements
+          html() - Set of html tag returns the content of selected elements (including                HTML markup)
+          val() - Set of value returns the value of form fields
+  2.Get Content
+        text() - set value & returns the text content of selected elements
+        html() -  set value & returns the content of selected elements (including HTML    markup)
+        val() -  set value & returns the value of form fields
+--call back function
+it have two paramiter ones is index(i) & second is orignaltext
+3.Add Elements
+     append() - Inserts content at the end of the selected elements
+     prepend() - Inserts content at the beginning of the selected elements
+     after() - Inserts content after the selected elements
+     before() - Inserts content before the selected elements
+note:-you can also pass vareable in all add mathed like thish $("body")append(text, item);
+4.jQuery Manipulating CSS
+   addClass() - Adds one or more classes to the selected elements
+   removeClass() - Removes one or more classes from the selected elements
+   toggleClass() - Toggles between adding/removing classes from the  selected elements
+   css() - set css,
+             -gat value of propertyname
+5.jQuery Dimension
+width()
+height()
+innerWidth()
+innerHeight()
+outerWidth()
+outerHeight()
+

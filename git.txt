@@ -1,0 +1,32 @@
+u = untracked
+a = index added
+m = modified
+=======Config ac===============
+Git config --global user.name "raval darshan"
+Git config --global user.email "ravaldarshan237200@gmail.com"
+
+========add file===============
+git init
+git add . //for all files
+git add exampale1.txt. //for singel File
+
+=========commit code============
+git commit -m "first commit"
+
+==========check status any changes==========
+Git status
+
+============how to push code===============
+git remote add origin https://github.com/mravarldarshan/agos-book-shop-store.git
+git branch -M master
+git push -u origin master
+
+=============remove origin==================
+git remote rm origin
+
+
+
+git branch -m main raval
+git fetch origin
+git branch -u origin/raval raval
+git remote set-head origin -a

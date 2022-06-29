@@ -1,0 +1,262 @@
+--call_bake 
+means function inside function when one function is 100%finished then another fuction is call
+
+-- Manipulating
+ Manipulating means add,remove,toggle,sat,unsat
+
+--namespace
+i import 2 sam class in ower programe whith using namespace
+-file name is first.php
+               namespace fast;//create namespace
+               {code}//your code
+//now you can use 
+require fist.php;
+--how to crate namespace object
+$obj=new fast\test();
+
+//Operator Precedence
+Operator precedence determines the grouping of terms in an expression and decides how an expression is evaluated. Certain operators have higher precedence than others; for example, the multiplication operator has a higher precedence than the addition operator.
+
+For example, x = 7 + 3 * 2; here, x is assigned 13, not 20 because operator * has a higher precedence than +, so it first gets multiplied with 3*2 and then adds into 7.--Comments--
+single line //,#
+multiline /*__*/
+
+--variable starts with the $ sign
+
+--Rules for PHP variables:
+A variable starts with the $ sign, followed by the name of the variable
+A variable name must start with a letter or the underscore character
+A variable name cannot start with a number
+A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )
+Variable names are case-sensitive ($age and $AGE are two different variables)
+
+--PHP has three different variable scopes:
+{1}local-outside funtion
+{2}global-inside funtion
+{3}static-value are not changed
+
+--PHP data types:
+String
+Integer
+Float (floating point numbers - also called double)
+Boolean
+Array
+Object
+NULL
+Resource
+
+--PHP Object
+Classes and objects are the two main aspects of object-oriented programming.
+
+A class is a template for objects, and an object is an instance of a class.
+
+--PHP String Functions 
+strlen() - Return the Length of a String
+str_word_count() - Count Words in a String
+strrev() - Reverse a String
+strpos() - Search For a Text Within a String
+str_replace() - Replace Text Within a String
+
+--Check if the type of a variable 
+var_dump(is_int($x));
+var_dump(is_float($x));
+var_dump($x);//Check if a numeric value is finite or infinite
+var_dump($x);//Invalid calculation will return a NaN value
+var_dump(is_numeric($x));Check if the variable is numeric
+$int_cast = (int)$x;Cast float and string to integer
+
+--PHP Math
+pi()//pai value
+min()
+max()
+abs()//used to return the absolute(positive) value of a number
+sqrt()//returns square root of a positive float number
+round()//used to round a floating-point number
+rand()//rendem namber
+
+--PHP Constants
+define(name, value, case-insensitive)// ther are 3 paramiter when case-insensitive bydefolt true,The value cannot be changed during the script,In PHP7, you can create an Array constant using the define() function.
+Note:-If you create a __construct() function, PHP will automatically call this function when you create an object from a class.
+
+--PHP Operators
+Arithmetic operators
+Assignment operators
+Comparison operators
+Increment/Decrement operators
+Logical operators
+String operators
+Array operators
+Conditional assignment operators-+,-,/,*,**,%
+
+--PHP Conditional Statements
+if else
+swich case
+
+--PHP Loops
+while (entry control)
+do while(exit control)
+for loop(entry control)
+foreach
+break/continue
+
+--PHP Functions
+PHP Function with Arguments
+PHP Default Argument Value
+PHP Functions - Returning values
+PHP Return Type Declarations
+Passing Arguments by Reference
+
+--PHP Arrays
+In PHP, there are three types of arrays:
+1.Indexed arrays - Arrays with a numeric index
+2.Associative arrays - Arrays with named keys
+3.Multidimensional arrays - Arrays containing one or more arrays
+
+--PHP Sorting Arrays
+sort() - sort arrays in ascending order
+rsort() - sort arrays in descending order
+asort() - sort associative arrays in ascending order, according to the value
+ksort() - sort associative arrays in ascending order, according to the key
+arsort() - sort associative arrays in descending order, according to the value
+krsort() - sort associative arrays in descending order, according to the key
+
+--PHP Global Variables - Superglobals
+$GLOBALS//used to access global variables
+$_SERVER//which holds information about headers, paths, and script locations,all information abute your system & natwerk
+$_REQUEST//used to collect data after submitting an HTML form
+$_POST
+$_GET
+$_FILES
+$_ENV
+$_COOKIE
+$_SESSION
+
+--PHP Regular Expressions
+preg_match()	Returns 1 if the pattern was found in the string and 0 if not
+
+preg_match_all()	Returns the number of times the pattern was found in the string, which may also be 0
+
+preg_replace()	Returns a new string where matched patterns have been replaced with another string
+
+--Regular Expression Modifiers
+i	Performs a case-insensitive search
+m	Performs a multiline search (patterns that search for the beginning or end of a string will match the beginning or end of each line)
+
+u	Enables correct matching of UTF-8 encoded patterns
+
+--Regular Expression Patterns
+[abc]	Find one character from the options between the brackets
+[^abc]	Find any character NOT between the brackets
+[0-9]	Find one character from the range 0 to 9
+
+--Metacharacters
+Metacharacter	Description
+|	Find a match for any one of the patterns separated by | as in: cat|dog|fish
+.	Find just one instance of any character
+^	Finds a match as the beginning of a string as in: ^Hello
+$	Finds a match at the end of the string as in: World$
+\d	Find a digit
+\s	Find a whitespace character
+\b	Find a match at the beginning of a word like this: \bWORD, or at the end of a word like this: WORD\b
+\uxxxx	Find the Unicode character specified by the hexadecimal number xxxx
+--Quantifier	
+n+	Matches any string that contains at least one n
+n*	Matches any string that contains zero or more occurrences of n
+n?	Matches any string that contains zero or one occurrences of n
+n{x}	Matches any string that contains a sequence of X n's
+n{x,y}	Matches any string that contains a sequence of X to Y n's
+n{x,}	Matches any string that contains a sequence of at least X n's
+
+--Grouping
+You can use parentheses ( ) to apply quantifiers to entire patterns. They also can be used to select parts of the pattern to be used as a match.
+
+--php form handling
+GET vs. POST
+
+$_GET is an array of variables passed to the current script via the URL parameters.
+$_POST is an array of variables passed to the current script via the HTTP POST method.
+When to use GET?
+Note: GET should NEVER be used for sending passwords or other sensitive information!
+
+--form validation
+Name	Required. + Must only contain letters and whitespace
+E-mail	Required. + Must contain a valid email address (with @ and .)
+Website	Optional. If present, it must contain a valid URL
+Comment	Optional. Multi-line input field (textarea)
+Gender	Required. Must select one
+
+--What is the $_SERVER["PHP_SELF"] variable?
+The $_SERVER["PHP_SELF"] is a super global variable that returns the filename of the currently executing script.
+
+--What is the htmlspecialchars() function?
+The htmlspecialchars() function converts special characters to HTML entities. This means that it will replace HTML characters like < and > with &lt; and &gt;. This prevents attackers from exploiting the code by injecting HTML or Javascript code (Cross-site Scripting attacks) in forms.
+
+--$isset()
+The isset() function checks whether a variable is set, which means that it has to be declared and is not NULL.
+
+--Get a Date
+The required format parameter of the date() function specifies how to format the date (or time).
+
+Here are some characters that are commonly used for dates:
+
+d - Represents the day of the month (01 to 31)
+m - Represents a month (01 to 12)
+Y - Represents a year (in four digits)
+l (lowercase 'L') - Represents the day of the week
+Other characters, like"/", ".", or "-" can also be inserted between the characters to add additional formatting.
+
+--Get a Time
+Here are some characters that are commonly used for times:
+
+H - 24-hour format of an hour (00 to 23)
+h - 12-hour format of an hour with leading zeros (01 to 12)
+i - Minutes with leading zeros (00 to 59)
+s - Seconds with leading zeros (00 to 59)
+a - Lowercase Ante meridiem and Post meridiem (am or pm)
+
+--file hadaling
+1.readfile() function reads a file and writes it to the output buffer.
+2.fwrite()
+3.fclose()
+4.Upload File
+
+--What is a Cookie?
+A cookie is often used to identify a user. A cookie is a small file that the server embeds on the user's computer. Each time the same computer requests a page with a browser, it will send the cookie too. With PHP, you can both create and retrieve cookie values.
+
+-- PHP Session
+A session is started with the session_start() function.
+Session variables are set with the PHP global variable: $_SESSION.
+
+--PHP Filters Advanced
+Validate IPv6 Address
+Validate an Integer Within a Range
+Validate URL
+etc.
+
+--Callback Functions
+A callback function (often referred to as just "callback") is a function which is passed as an argument into another function.
+--arry_map() to pass arry  data stap by stap
+
+Any existing function can be used as a callback function. To use a function as a callback function, pass a string containing the name of the function as the argument of another function:
+
+--What is JSON?
+JSON stands for JavaScript Object Notation, and is a syntax for storing and exchanging data.
+Since the JSON format is a text-based format, it can easily be sent to and from a server, and used as a data format by any programming language.
+json_encode()
+json_decode()
+
+--What is an Exception?
+An exception is an object that describes an error or unexpected behaviour of a PHP script.
+
+Exceptions are thrown by many PHP functions and classes.
+
+User defined functions and classes can also throw exceptions.
+
+Exceptions are a good way to stop a function when it comes across data that it cannot use.
+Throwing an Exception
+The throw statement allows a user defined function or method to throw an exception. When an exception is thrown, the code following it will not be executed.
+
+If an exception is not caught, a fatal error will occur with an "Uncaught Exception" message.
+-try cach() statment
+-throw statment
+

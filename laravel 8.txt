@@ -1,0 +1,324 @@
+(install,ragister,assigin,use)routs,view,controllers,modell
+--what is composer
+Composer is not a package manager in the same sense as Yum or Apt are. Yes, it deals with "packages" or libraries, but it manages them on a per-project basis, installing them in a directory (e.g. vendor) inside your project. By default, it does not install anything globally. Thus, it is a dependency manager. It does however support a "global" project for convenience via the global command.
+--install composer (2-way)
+1.install satup file-https://getcomposer.org/doc/00-intro.md#installation-windows
+2.install vie cmd
+-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+-php -r "if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa72f40b5f787e49f22d4c2f19492ac310e8cba5b96ac8b64115ac402c8cd292b8a03482574915d1a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+-php composer-setup.php
+-php -r "unlink('composer-setup.php');"
+
+--instoll larvel
+1.via composer
+-composer global require laravel/installer //instoll laravel
+-composer global remove laravel/installer//remove larvel
+-laravel new example-app //create new app/build
+-php artisan serve //it give url/ip/host_id
+-code. //open code editer
+-----------------------------------------------------------------------------------------------------------------
+--features of larvel
+Routing controllers.
+Configuration management.
+Testability.
+Authentication and authorization of users.
+Modularity.
+ORM (Object Relational Mapper) features.
+Provides a template engine.
+Building schemas.
+E-mailing facilities.
+----------------------------------------------Routing----------------------------------------------------
+--Laravel basic Routing
+ex:-
+//Route::view('/','welcome');  
+Route::get('/', function ()  
+ {      
+return view ('welcome');  
+});
+note:-hear route is class,which define gat()mathed & gat mathed cantain '/'(root dirictery) paramiter & function,funtion return prefix of file name.
+-CSRF Protection
+<form method="POST" action="/profile">  
+    @csrf  //include CSRF token field 
+    ...  
+</form>  
+-rout define
+Route::post($uri, $callback);
+-when you need to multiple http verbs inside route
+Route::match(['get', 'post'], '/', function () {  
+//multiple http verbs 
+});  
+Route::any('/', function ()   
+{  
+// responds to all the http verbs like,post,gat,delete,put
+}) 
+-redirect() method //two way  
+1.Route::get('hello', function () {  
+    return redirect('/');  
+2.Route::redirect('hello','/');
+-----------------------------------------------------------------------------------------------
+--Laravel Routing Parameters
+1.Required Parameters//The required parameters are the parameters that we pass(gat) in the URL.
+ex:-Route::get('/post/{id}', function($id)  
+{   return "id number is : ". $id;   }  ); 
+//We can also pass the multiple parameters.  
+ Route::get('/post/{id}/{name}', function($id,$name)  
+{  return "id number is : ". $id ." ".$name;   }  );
+  
+2.Optional Parameters
+note-you can place '?' operator after the parameter name. If you want to provide the optional parameter
+ex-Route::get('user/{name?}', function ($name=null) {  
+    return $name;  
+});  
+//if no pass any paramiter then it rutens null when you pass paramiter it retun  given value thare is optional paramiter
+
+-ragular expression using where
+ex-Route::get('user/{id}/{name}', function ($id,$name) {  
+    return "id is : ". $id ." ,".  "Name is : ".$name ;  
+})->where(['id'=>'[0-9]+', 'name'=>'[a-zA-Z]+']); //id and name
+
+*Global Constraints
+ex-public function boot()  
+{  
+Route::pattern('id', '[0-9]+');  
+parent::boot();  
+}  
+-------------------------------------------------------------------------------------------------------------------
+-Named Routes
+the way of providing a nickname to the route,using name() mathed
+ex;-Route::get('student/details', function()  
+{    
+}) -> name('student_details');//we can give name of routes  
+
+--Generating URLs  
+$url= route('student_details');  
+//Generating Redirects...  
+return redirect() -> route('student_details');  
+ --if many paramiter in url
+Route::get('student/details/example',array   
+('as'=>'student.details',function()  
+{  
+   $url=route('student.details');  
+   return "The url is : " .$url;  
+})); 
+note;-you can chak rout list using git like this-php artisan route:list
+--paramiter in named routes
+Route::get('user/{id}/profile',function($id)  
+{  
+   $url=route('profile',['id'=>100]);  
+    return $url;  
+})->name('profile'); 
+--Navigating from one route to another using named routes
+-add in  web.php
+Route::Get('/',function()  
+{  
+  return view('student');  
+});  
+  
+Route::get('student/details',function()  
+{  
+  $url=route('student.details');  
+ return $url;  
+})->name('student.details');  
+-create new file student.blade.php
+<a href="{{ route('student.details') }}">Student</a>  
+------------------------------------------ Middleware------------------------------------------------------
+--Laravel Middleware
+layer between the user and the request.It means user&admin request will pass through the middleware
+//change errer file like 503,403
+php artison vendor:publish --tag=laraval-errors
+//create middleware thish comand
+php artisan make:middleware (middlewarename)
+//create controller thish comand
+php artisan make:controller (controller_name)
+
+--registering middleware //three whay
+1. global middleware
+2.assigning middleware to routes
+3.middleware groups
+-------------------------------------------------------------------------------------
+--Route Groups
+These shared attributes can be passed in an array format as the first parameter to the Route::group method.
+-Route::group( [ ] , callback); 
+-Parameters
+[ ]: It is an array passed to the group method as a first parameter. 
+---------------------------------Controllers-------------------------
+Controllers
+-Laravel controllers are an essential feature in a Laravel framework. Initially, we were handling the request logic in the form of closures in route files; now, in place of using closures in route files, we use controller classes.
+-multi Action Controllers
+//thare are some mathed are used in controllers ragister
+create(): It is used to create a new resource.
+store(): It is used to store the specified resource.
+update(): It is used to update the specified resource in the storage.
+destroy(): It is used to remove the specified resources from the storage.
+
+-Single Action Controllers
+if we need one controllers mathed then use this comand
+php artisan make:contoller ShowAbout --invokable
+
+-----------------------------Laravel Resource Controllers------------------------------
+-Laravel Resource Controllers
+Laravel resource controllers provide the CRUD routes to the controller in a single line of code. 
+like:-Route::resource('posts','PostController');
+advantages:-all controllers mathed are routs in one line
+//how to create
+php  artisan make:controller (contolername) -resource; 
+------------------------------------------------------------------------------------------------
+-Controller to Middleware
+We can assign the middleware to the controller in the web.php file.
+
+-fast you have create PostController
+-Now, we create the middleware,using thish comands "php artisan make:middleware Check"  
+-we have to add the path of the middleware Check.php in kernel.php file.
+like thish;- 'check'=>\App\Http\Middleware\Check::class  
+-Add the following code in the web.php file to assign the middleware to the PostController.
+like;-Route::get('posts', 'PostController@create')->middleware('check');  
+----------------------------------------views-------------------------------------------------------
+Views contain the html code required by your application, and it is a method in Laravel that separates the controller logic and domain logic from the presentation logic. Views are located in the resources folder, and its path is resources/views
+
+note:-larvale are used taplating enging thats names is blade tamplate so that i use blade.php
+
+-blade file
+<html>  
+    <body>  
+        <h1>Name of the Contact is :  <?php echo $name; ?></h1>  
+    </body>  
+</html>  
+-routs define
+Route::get('/contact', function(){  
+  return view('Contact',['name'=>'John']);  
+});  
+
+-Nesting the Views
+Views can also be nested within the sub-directory resources/views directory.
+
+-Determining the existence of view
+ We can use the exists() method that returns true if the view exists.
+code in PostController.php file like;-
+use Illuminate\Support\Facades\View;  
+public function display()  
+{  
+  if (View::exists('admin.details')) {  
+echo "the view of the admin.details exists";  
+      
+}  
+else  
+echo "view does not exist";  
+}
+-------------------passing data from route to view--------------------------------
+-the data should be an array whith key/value pairs
+-inside your view,you can then access cach value using its corresponding key
+-There are various ways of passing data to views:
+
+1.By using the name array(using controller)
+2.By using with() function
+3.By using compact() function
+
+----------------------------------------------------------------------------------------------------
+-The Blade is a powerful templating engine in a Laravel framework
+-save it with a .blade.php extension
+-coment in blade code like;-{{--coments--}}
+-Why Blade template?
+1.Displaying data
+If you want to print the value of a variable, then you can do so by simply enclosing the variable within the curly brackets.
+Syntax
+{{$variable}};  note:-hold code inside {{}}in thish blade
+2.Ternary operator
+In blade template, the syntax of ternary operator can be written as:
+{{ $variable or 'default value'}}  
+--Blade Template Control Statements
+@hasSection('title')
+
+-------------------------conditional directives---------------------------------
+-if directive
+@if(condition)
+.............................
+@else
+.....................
+@elseif
+-unless directive
+@unless
+-isset directive
+@isset();
+-auth directive
+@auth('user')
+                     //user is authenticated
+@endif
+-guest directive
+@guest('guest')
+                   //gast is not  authenticated
+@endguest
+------------environment directives------------------------------------
+-production directives
+@production
+            //production specific content
+@endproduction
+
+-specific env directives
+@env('env_name')
+              //running in env_name
+@endenv
+
+-multiple specific env directives
+@env(['env1','env2'])
+//running in env1 or en2
+@endenv
+----------------switch directives------------------
+@switch(expression)
+     @case(expression 1)
+         ............
+         @break
+      @default
+         ..................
+      @endswitch
+------------loop directives---------------
+-For loop
+-while
+-foreach
+-forelse
+-------------break and cantinue directives-----
+-break
+-cantinue
+-----------loop variable------------------
+
+------------------------------------------------------------------------------------------------------------------------
+-Extending Master Layout
+@extends('layout.master')  
+@section('content')  
+<h1>Contact Page </h1>   
+@stop  
+-Now, Add the following route in web.php file.
+Route::get('/contact', function () {  
+    return view('contact');  
+});  
+----------------------------
+-The @yield is used to display the content.
+
+-we can also add javascript
+@section('footer')  
+<script> alert("Hello JavaTpoint") </script>      
+@stop  
+--Use of @parent directive
+The use of @parent directive is to display the content of the section defined in the master layout.
+@parent  
+<p>this is appended</p>  
+@stop  
+---------------------Forms------------------
+--points--
+creating form
+accessing form data
+validating form
+@csrf //protect injaction it create id
+dd()-dump and dia
+$composer require "laravelcollective/html":"^5.4.0" 
+
+//aliases array of the config/app.php file.
+'aliases' => [  
+         Form' => Illuminate\Html\FormFacade::class,  
+                 'Html' => Illuminate\Html\HtmlFacade::class,   
+                         ],  
+                         //Open a form
+                         {Form::open(['url' => 'post/create'])}  
+                         //  
+                         {Form::close()}  
+//we want to use the put method in a form, then the code is given below:
+Form::open(['url'=>'Post/create , 'method'=>'Put''])  

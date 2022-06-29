@@ -1,0 +1,517 @@
+
+DDL – Data Definition Language
+DQl – Data Query Language
+DML – Data Manipulation Language
+DCL – Data Control Language
+TCL – Transaction Control Language.
+
+--connection database
+my sql -u root -p -h localhost
+//-u = user,-p = password, -h = host
+
+--view database
+show databases;
+show tabels;
+
+--view warnings & error
+show warnings;
+show error;
+
+--create db & delate db
+create database darshan;
+drop database darshan;
+
+--enter .
+use darshan;
+select database();
+
+--create table
+create table raval
+(
+	name varchar(25) not null default 'unnamed' ;
+	number numeric;
+);
+
+//creates a new table called "TestTables" (which is a copy of the "Customers" table): 
+CREATE TABLE TestTable AS
+SELECT customername, contactname
+FROM customers;
+
+--view recode
+disc raval;    or   show columns from raval;
+
+--insert recode in table
+insert into raval (id, name, class) values (1 , 'vinod' , 5);
+select * from raval;
+
+
+---------------------my-sql -------------------------------
+
+--crud quary
+1. connection databesh
+$con=("servername","username","password","databeshname");
+
+2. insert recode
+INSERT INTO table_name (`columnname`)
+VALUES (`value`, `value`)
+
+3. delete recode
+"DELETE FROM MyGuests WHERE id=3";
+DELETE FROM Customers;
+
+//DELETE ALL recode
+TRUNCATE TABLE table_name;
+
+4. update recode
+"UPDATE MyGuests SET lastname='Doe' WHERE id=2";
+
+5. dispaly recode
+$quary="SELECT * FROM emp";
+
+--ALTER (ADD &REMOVE column & changes)
+ALTER TABLE Customers
+ADD Email varchar(255);
+
+ALTER TABLE Customers
+DROP COLUMN Email;
+
+--------------Aggregate Functions----------------
+
+1. MIN()
+SELECT MIN(Price) AS SmallestPrice
+FROM Products;
+
+2. MAX()
+SELECT MAX(Price) AS SmallestPrice
+FROM Products;
+
+3. COUNT() 
+SELECT COUNT(ProductID)
+FROM Products;
+
+4. AVG()
+SELECT AVG(Price)
+FROM Products;
+
+5. SUM()
+SELECT SUM(Quantity)
+FROM OrderDetails;
+
+------------------LIKE EXAMPALE--------------
+
+1. selects starting with "a"
+SELECT * FROM Customers
+WHERE CustomerName LIKE 'a%';
+
+2. select ending with "a"
+SELECT * FROM Customers
+WHERE CustomerName LIKE '%a';
+
+3. select 'a' in any position
+SELECT * FROM Customers
+WHERE CustomerName LIKE '%a%';
+
+4. select 'a' second position
+SELECT * FROM Customers
+WHERE CustomerName LIKE '_a%';
+
+5. SELECT * FROM Customers
+WHERE CustomerName LIKE 'a__%';
+
+6. start with 'a' and end with 'o'
+SELECT * FROM Customers
+WHERE ContactName LIKE 'a%o';
+
+7. not start with 'a' 
+SELECT * FROM Customers
+WHERE CustomerName NOT LIKE 'a%';
+
+-----------------join----------------
+--*Types of join*--
+1. (INNER) JOIN: Returns records that have matching values in both tables
+2. LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+3. RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+4. FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+
+1. INNER JOIN
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+
+SELECT * FROM employes_selary
+    -> JOIN employes_details
+    -> on employes_details.id = employes_selary.id;
+
+2. LEFT JOIN
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CustomerName;
+
+3. RIGHT JOIN
+SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
+FROM Orders
+RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+ORDER BY Orders.OrderID;
+
+4. FULL JOIN
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+FULL OUTER JOIN Orders ON Customers.CustomerID=Orders.CustomerID
+ORDER BY Customers.CustomerName;
+
+--AMBIGUOUS PROBLAM SOLVE
+SELECT employes_selary.id, bonus FROM employes_selary
+    -> JOIN employes_details
+    -> on employes_details.id = employes_selary.id;
+
+*. SELF JOIN 
+A self join is a regular join, but the table is joined with itself.
+
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
+
+-------------------SQL CONCEPT------------------------
+
+1. LIMIT
+"SELECT * FROM Orders LIMIT 30";
+
+2. get last id
+$lastid = mysqli_insert_id($con);
+
+3. DISTINCT(unic value)
+SELECT DISTINCT Country FROM Customers;
+
+4. BETWEEN
+SELECT * FROM Products
+WHERE Price BETWEEN 50 AND 60;
+
+5. IN
+SELECT * FROM Customers
+WHERE City IN ('Paris','London');
+
+6. ORDER BY
+SELECT * FROM Customers
+ORDER BY Country ASC, CustomerName DESC;
+
+7. SQL TOP PERCENT
+SELECT TOP 50 PERCENT * FROM Customers;
+
+8. SQL aliases are used to give a table, or a column in a table, a temporary name.
+SELECT CustomerName, Address + ', ' + PostalCode + ' ' + City + ', ' + Country AS Address
+FROM Customers;
+
+9. UNION
+//DISPLAY ONLY DISTINCT(UNIC NOT DUBLICAT) RECODE
+SELECT City FROM Customers
+UNION
+SELECT City FROM Suppliers
+ORDER BY City;
+
+//DISPLAY ALL RECODE
+SELECT City FROM Customers
+UNION ALL
+SELECT City FROM Suppliers
+ORDER BY City;
+
+10. GROUP BY
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+ORDER BY COUNT(CustomerID) DESC;
+
+11. HAVING
+The HAVING clause was added to SQL because the WHERE keyword cannot be used with aggregate functions.
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5
+ORDER BY COUNT(CustomerID) DESC;
+
+12. EXISTS
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price < 20);
+
+13. ANY, ALL
+SELECT ProductName
+FROM Products
+WHERE ProductID = ANY
+  (SELECT ProductID
+  FROM OrderDetails
+  WHERE Quantity > 1000);
+
+SELECT ProductName
+FROM Products
+WHERE ProductID = ALL
+  (SELECT ProductID
+  FROM OrderDetails
+  WHERE Quantity = 10);
+
+14. SELECT INTO
+The SELECT INTO statement copies data from one table into a new table.
+SELECT * INTO CustomersGermany
+FROM Customers
+WHERE Country = 'Germany';
+
+15. INSERT INTO SELECT
+The INSERT INTO SELECT statement copies data from one table and inserts it into another table.
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1
+WHERE condition;
+
+16. SQL CASE 
+SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+    WHEN Quantity = 30 THEN 'The quantity is 30'
+    ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails;
+
+17. IFNULL(), ISNULL(), COALESCE(), and NVL() Functions
+SELECT ProductName, UnitPrice * (UnitsInStock + IFNULL(UnitsOnOrder, 0))
+FROM Products;
+
+18. Procedure
+CREATE PROCEDURE SelectAllCustomers
+AS
+SELECT * FROM Customers
+GO;
+///Execute the stored procedure
+EXEC SelectAllCustomers;
+
+//Procedure With multipale Parameter
+CREATE PROCEDURE SelectAllCustomers @City nvarchar(30), @PostalCode nvarchar(10)
+AS
+SELECT * FROM Customers WHERE City = @City AND PostalCode = @PostalCode
+GO;
+//Execute the stored procedure
+EXEC SelectAllCustomers @City = 'London', @PostalCode = 'WA1 1DP';
+
+//pl SQL
+BEGIN
+SELECT emp_name INTO empname
+FROM employes_details
+WHERE id = empid;
+END
+
+// how to use in php file
+$sql="call getempname(3,@result);";
+$resl-mysqli_query($con,$sql);
+$res-mysqli_query($con,"select @result");
+$row-mysqli_fetch_assoc($res);
+echo'<pre>';
+print_r($row);
+
+19. sql Comments
+single-line = --
+multi-line = /* */
+
+20. BACKUP db
+BACKUP DATABASE testDB
+TO DISK = 'D:\backups\testDB.bak';
+
+//only the changes are backed up
+BACKUP DATABASE testDB
+TO DISK = 'D:\backups\testDB.bak'
+WITH DIFFERENTIAL;
+
+---------------SQL-CONSTRAINT--------------
+1.NOT NULL - Ensures that a column cannot have a NULL value
+2.UNIQUE - Ensures that all values in a column are different
+3.PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+4.FOREIGN KEY - Prevents actions that would destroy links between tables
+5.CHECK - Ensures that the values in a column satisfies a specific condition
+6.DEFAULT - Sets a default value for a column if no value is specified
+7.CREATE INDEX - Used to create and retrieve data from the database very quickly
+
+CREATE TABLE table_name(
+ id INT NOT NULL UNIQUE,
+ name VARCHAR(50)NOT NULL,
+ age INT NOT NULL CHECK(age>=18),
+ gender VARCHAR(10)NOT NULL,
+ phone VARCHAR(10)NOT NULL UNIQUE,
+ city VARCHAR(10)NOT NULL DEFAULT'Agra',
+);,
+
+3. PRIMARY KEY
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (ID)
+);
+
+4. FOREIGN KEY
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+);
+
+5. CHECK
+The CHECK constraint is used to limit the value range that can be placed in a column.
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CHECK (Age>=18)
+);
+
+7. CREATE INDEX
+//they are just used to speed up searches/queries.
+CREATE INDEX index_name
+ON table_name (column1, column2, ...);
+
+----------------------------------------------------------------
+--CREATE VIEW
+CREATE VIEW [Brazil Customers] AS
+SELECT CustomerName, ContactName
+FROM Customers
+WHERE Country = 'Brazil';
+
+//EXICUTE VIEW
+SELECT * FROM [Brazil Customers];
+
+//UPDATING VIEW
+CREATE OR REPLACE VIEW [Brazil Customers] AS
+SELECT CustomerName, ContactName, City
+FROM Customers
+WHERE Country = 'Brazil';
+
+//DROP VIEW
+DROP VIEW [Brazil Customers];
+
+---------------TRIGGER-------------------
+--type of trigger
+1. Row-Level Trigger
+2. Statement-Level Trigger
+
+Trigger Activation Time: BEFORE | AFTER
+Trigger Event: INSERT | UPDATE | DELETE
+// syntex
+CREATE TRIGGER trigger_name    
+    (AFTER | BEFORE) (INSERT | UPDATE | DELETE)  
+         ON table_name FOR EACH ROW    
+         BEGIN    
+        --variable declarations    
+        --trigger code    
+        END;   
+
+//in my SQL
+INSERT INTO employes_details_bakup SET emp_name = old.emp_name
+,emp_contect_no = old.emp_contect_no, emp_designation = old.emp_designation, id = old.id;
+
+-----------------userdefine(stored)-functions--------------
+=============syntex==========
+CREATE[OR REPLACE] FUNCTION functions_name
+(parameter list)
+RETURN datatype
+BEGIN
+    <BODY>
+    RETURN(return_value);
+END;
+==============================
+
+===========EXAMPALE 1==========
+CREATE FUNCTION hello (s CHAR(20))
+RETURNS CHAR(50) DETERMINISTIC
+    RETURN CONCAT('Hello, ',s,'!');
+
+//how to call a udf
+SELECT hello('world');
+select udf_function();
+select * from dbo.INSERT_NAME('vivak')
+
+
+===========EXAMPALE 2===========
+DELIMITER //
+CREATE OR REPLACE FUNCTION hello
+(string varchar(100))
+RETURNS varchar(100)
+BEGIN
+    RETURN CONCAT("Hello",string);
+END;
+//
+DELIMITER ;
+
+// how to change result column name
+select hello('isna') as sapa;
+
+===========EXAMPALE 3===========
+DELIMITER //
+CREATE OR REPLACE FUNCTION recode
+(name varchar(100))
+RETURNS varchar(100)
+BEGIN
+    RETURN  (SELECT emp_contect_no FROM employes_details_bakup WHERE emp_name = name);
+END;
+//
+DELIMITER ;
+
+//call a functions
+select recode('darshan') as contectno;
+
+---------------temporary table---------------------
+A temporary table in MySQL will be dropped automatically when the user closes the session or terminates the connection manually.
+
+===============syntex===================
+CREATE TEMPORARY TABLE table_name (  
+   column_1, column_2, ..., 
+   table_constraints  
+);  
+============EXAMPALE-1=================
+CREATE TEMPORARY TABLE ok 
+SELECT * FROM employes_details_bakup LIMIT 1;
+SELECT * FROM ok; 
+===========EXAMPALE-2===================
+
+CREATE TEMPORARY TABLE temp_customers  
+SELECT c.cust_name, c.city, o.prod_name, o.price   
+FROM orders o  
+INNER JOIN customer c ON c.cust_id = o.order_id  
+ORDER BY o.price DESC;  
+
+SELECT * FROM temp_customers; 
+ 
+============EXAMPALE-3=================
+CREATE TEMPORARY TABLE employes (
+    username varchar(255),
+    usercontect varchar(255)
+)
+INSERT INTO employes (username,usercontect)
+SELECT emp_name, emp_contect_no
+FROM employes_details_bakup
+WHERE id > 0;
+
+==========EXAMPALE-4===================
+CREATE TEMPORARY TABLE top_customers
+SELECT p.customerNumber, 
+       c.customerName, 
+       ROUND(SUM(p.amount),2) sales
+FROM payments p
+INNER JOIN customers c ON c.customerNumber = p.customerNumber
+GROUP BY p.customerNumber
+ORDER BY sales DESC
+LIMIT 10;
+
+============EXAMPALE-5=================
+ CREATE TEMPORARY TABLE SalesSummary (
+   -> product_name VARCHAR(50) NOT NULL
+   -> , total_sales DECIMAL(12,2) NOT NULL DEFAULT 0.00
+   -> , avg_unit_price DECIMAL(7,2) NOT NULL DEFAULT 0.00
+   -> , total_units_sold INT UNSIGNED NOT NULL DEFAULT 0
+);
+
+INSERT INTO SalesSummary
+(product_name, total_sales, avg_unit_price, total_units_sold)
+VALUES ('cucumber', 100.25, 90, 2);

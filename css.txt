@@ -1,0 +1,42 @@
+--Three Ways to Insert CSS
+1.External CSS
+2.Internal CSS
+3.Inline CSS
+
+--CSS Selectors
+1.Simple selectors (select elements based on name, id, class)
+2.Combinator selectors (select elements based on a specific relationship between them)
+3.Pseudo-class selectors (select elements based on a certain state)
+4.Pseudo-elements selectors (select and style a part of an element)
+5.Attribute selectors (select elements based on an attribute or attribute value)
+
+--Selecter 
+Id (#center),class(.center), elements (p,h1),universel(*)
+
+--CSS Comments
+Multiline comments /*_ _ _*/
+(Html)Singale line comments <!--_____-->
+
+--css color
+1.CSS Border Color
+2.css text color
+3.css background color
+
+--CSS Color Values
+In CSS, colors can also be specified using RGB values, HEX values, HSL values, RGBA values, and HSLA values:
+Ex:-rgb(255, 99, 71) //rgb(red, green, blue)
+       #ff6347
+       hsl(9, 100%, 64%)//hue, saturation, and lightness (HSL)
+       rgba(255, 99, 71, 0.5) //rgba(red, green, blue, alpha)
+       hsla(9, 100%, 64%, 0.5)
+       
+--css background property
+1.background-color //background-color: lightblue;
+   - Opacity / Transparency //opacity: 0.0 to 1.0;
+2.background-image :url("bgdesert.jpg");
+3.background-repeat :no-repeat,repeat-x,y;//repeats an image both horizontally and vertically 
+4.background-attachment: scroll,fixed;
+5.background-position: right top;
+6.background (shorthand property) Multipale property under background
+
+--CSS Borders

@@ -1,0 +1,47 @@
+--install vie cmd
+-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+-php -r "if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa72f40b5f787e49f22d4c2f19492ac310e8cba5b96ac8b64115ac402c8cd292b8a03482574915d1a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+-php composer-setup.php
+-php -r "unlink('composer-setup.php');"
+-----------------------------------------------------------------------------------------------
+--instoll larvel
+1.via composer
+-composer clear-cache
+-composer global require laravel/installer //instoll laravel
+-composer global remove laravel/installer//remove larvel
+-laravel new example-app //create new app/build
+-php artisan serve //it give url/ip/host_id
+-code. //open code editer
+-----------------------------------------------------------------------------------------------------------
+//show all comands
+php artisan
+//show all routs list
+php artisan route:list
+//change errer file like 503,403
+php artison vendor:publish --tag=laraval-errors
+//create middleware thish comand
+php artisan make:middleware (middlewarename)
+//create controller thish comand
+php artisan make:controller (controller_name)
+// if you need singale controller
+php artisan make:contoller ShowAbout --invokable
+//how to create resource contoller(for crud)
+php artisan make:controller sharkController --resource
+---------------------------------------------------------------------------
+//create migration and contoler
+php artisan make:model student -mc
+//only create migration
+php artisan make:migration create_your-tabale-name_table
+
+//for migrate
+php artisan migrate
+
+//chack status
+php artisan migrate:status
+
+//create seeder 
+php artisan make:seeder userseeder
+
+//run seeder
+php artisan db:seed  --class userseeder
+

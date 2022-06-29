@@ -1,0 +1,305 @@
+note:-back-ticks (``), quotes ("")
+invoked means call
+Strict Mode
+When you pass a function as an argument, remember not to use parenthesis.
+
+//js display property
+
+Writing into an HTML element, using innerHTML.
+Writing into the HTML output using document.write().
+Writing into an alert box, using window.alert().
+Writing into the browser console, using console.log().
+
+//Camel Case in js (use to joint word)
+
+hyphens(first-name) is not allowed in js
+
+underscore(first_name)
+
+upper camel case(FirstName)
+
+lower camel case(firstName) is recomded
+
+//4 Ways to Declare a JavaScript Variable:
+Using var
+Using let
+Using const
+Using nothing
+
+
+//The let keyword was introduced in ES6 (2015).
+
+Variables defined with let cannot be Redeclared.
+
+Variables defined with let must be Declared before use.
+
+Variables defined with let have Block Scope.
+
+//Block Scope
+Before ES6 (2015), JavaScript had only Global Scope and Function Scope.
+
+ES6 introduced two important new JavaScript keywords: let and const.
+
+These two keywords provide Block Scope in JavaScript.
+
+Variables declared inside a { } block cannot be accessed from outside the block:
+
+//concatenate
+
+The + operator can also be used to add (concatenate) strings.
+The += assignment operator can also be used to add (concatenate) strings:
+
+//exponentiation
+The exponentiation operator (**) raises the first operand to the power of the second operand.
+
+//Operator Precedence 
+
+Value	Operator	Description	Example
+21	( )	Expression grouping	(3 + 4)
+ 	 	 	 
+20	.	Member	person.name
+20	[]	Member	person["name"]
+20	()	Function call	myFunction()
+20	new	Create	new Date()
+ 	 	 	 
+18	++	Postfix Increment	i++
+18	--	Postfix Decrement	i--
+ 	 	 	 
+17	++	Prefix Increment	++i
+17	--	Prefix Decrement	--i
+17	!	Logical not	!(x==y)
+17	typeof	Type	typeof x
+ 	 	 	 
+16	**	Exponentiation (ES2016)	10 ** 2
+ 	 	 	 
+15	*	Multiplication	10 * 5
+15	/	Division	10 / 5
+15	%	Division Remainder	10 % 5
+ 	 	 	 
+14	+	Addition	10 + 5
+14	-	Subtraction	10 - 5
+ 	 	 	 
+13	<<	Shift left	x << 2
+13	>>	Shift right	x >> 2
+13	>>>	Shift right (unsigned)	x >>> 2
+ 	 	 	 
+12	<	Less than	x < y 
+12	<=	Less than or equal	x <= y
+12	>	Greater than	x > y
+12	>=	Greater than or equal	x >= y
+12	in	Property in Object	"PI" in Math
+12	instanceof	Instance of Object	instanceof Array
+ 	 	 	 
+11	==	Equal	x == y
+11	===	Strict equal	x === y
+11	!=	Unequal	x != y
+11	!==	Strict unequal	x !== y
+ 	 	 	 
+10	&	Bitwise AND	x & y
+9	^	Bitwise XOR	x ^ y
+8	|	Bitwise OR	x | y
+7	&&	Logical AND	x && y
+6	||	Logical OR	x || y
+5	??	Nullish Coalescing	x ?? y
+4	? :	Condition	? "Yes" : "No"
+ 	 	 	 
+3	+=	Assignment	x += y
+3	/=	Assignment	x /= y
+3	-=	Assignment	x -= y
+3	*=	Assignment	x *= y
+3	%=	Assignment	x %= y
+3	<<=	Assignment	x <<= y
+3	>>=	Assignment	x >>= y
+3	>>>=	Assignment	x >>>= y
+3	&=	Assignment	x &= y
+3	^=	Assignment	x ^= y
+3	|=	Assignment	x |= y
+ 	 	 	 
+2	yield	Pause Function	yield x
+1	,	Comma	5 , 6
+
+//Extra large or extra small numbers can be written with scientific (exponential) notation:
+let y = 123e5;      // 12300000
+let z = 123e-5;     // 0.00123
+
+//js events
+Event	Description
+onchange	An HTML element has been changed
+onclick	The user clicks an HTML element
+onmouseover	The user moves the mouse over an HTML element
+onmouseout	The user moves the mouse away from an HTML element
+onkeydown	The user pushes a keyboard key
+onload	The browser has finished loading the page
+
+//Escape Character
+--problam
+let text = "We are the so-called "Vikings" from the north.";
+
+--solution
+\b	Backspace
+\f	Form Feed
+\n	New Line
+\r	Carriage Return
+\t	Horizontal Tabulator
+\v	Vertical Tabulator
+
+//js string methods
+length
+ToLowerCase()
+
+//array mathode
+
+Name		Description
+concat()	Joins arrays and returns an array with the joined arrays
+constructor	Returns the function that created the Array object's prototype
+copyWithin()	Copies array elements within the array, to and from specified positions
+entries()	Returns a key/value pair Array Iteration Object
+every()	Checks if every element in an array pass a test
+fill()	Fill the elements in an array with a static value
+filter()	Creates a new array with every element in an array that pass a test
+find()	Returns the value of the first element in an array that pass a test
+findIndex()	Returns the index of the first element in an array that pass a test
+forEach()	Calls a function for each array element
+from()	Creates an array from an object
+includes()	Check if an array contains the specified element
+indexOf()	Search the array for an element and returns its position
+isArray()	Checks whether an object is an array
+join()	Joins all elements of an array into a string
+keys()	Returns a Array Iteration Object, containing the keys of the original array
+lastIndexOf()	Search the array for an element, starting at the end, and returns its position
+length	Sets or returns the number of elements in an array
+map()	Creates a new array with the result of calling a function for each array element
+pop()	Removes the last element of an array, and returns that element
+prototype	Allows you to add properties and methods to an Array object
+push()	Adds new elements to the end of an array, and returns the new length
+reduce()	Reduce the values of an array to a single value (going left-to-right)
+reduceRight()	Reduce the values of an array to a single value (going right-to-left)
+reverse()	Reverses the order of the elements in an array
+shift()	Removes the first element of an array, and returns that element
+slice()	Selects a part of an array, and returns the new array
+some()	Checks if any of the elements in an array pass a test
+sort()	Sorts the elements of an array
+splice()	Adds/Removes elements from an array
+toString()	Converts an array to a string, and returns the result
+unshift()	Adds new elements to the beginning of an array, and returns the new length
+valueOf()	Returns the primitive value of an array
+
+
+//js maths methods
+Method	Description
+abs(x)	Returns the absolute value of x
+acos(x)	Returns the arccosine of x, in radians
+acosh(x)	Returns the hyperbolic arccosine of x
+asin(x)	Returns the arcsine of x, in radians
+asinh(x)	Returns the hyperbolic arcsine of x
+atan(x)	Returns the arctangent of x as a numeric value between -PI/2 and PI/2 radians
+atan2(y, x)	Returns the arctangent of the quotient of its arguments
+atanh(x)	Returns the hyperbolic arctangent of x
+cbrt(x)	Returns the cubic root of x
+ceil(x)	Returns x, rounded upwards to the nearest integer
+cos(x)	Returns the cosine of x (x is in radians)
+cosh(x)	Returns the hyperbolic cosine of x
+exp(x)	Returns the value of Ex
+floor(x)	Returns x, rounded downwards to the nearest integer
+log(x)	Returns the natural logarithm (base E) of x
+max(x, y, z, ..., n)	Returns the number with the highest value
+min(x, y, z, ..., n)	Returns the number with the lowest value
+pow(x, y)	Returns the value of x to the power of y
+random()	Returns a random number between 0 and 1
+round(x)	Rounds x to the nearest integer
+sign(x)	Returns if x is negative, null or positive (-1, 0, 1)
+sin(x)	Returns the sine of x (x is in radians)
+sinh(x)	Returns the hyperbolic sine of x
+sqrt(x)	Returns the square root of x
+tan(x)	Returns the tangent of an angle
+tanh(x)	Returns the hyperbolic tangent of a number
+trunc(x)	Returns the integer part of a number (x)
+
+//js cmaparisons
+oprater			(condition1, condition2)		result
+&&(and)        			true && teue			true
+
+||(or) 				true && false			true
+
+!					!(false)				true	
+
+//js loops
+for - loops through a block of code a number of times
+for/in - loops through the properties of an object
+for/of - loops through the values of an iterable object
+while - loops through a block of code while a specified condition is true
+do/while - also loops through a block of code while a specified condition is true
+
+
+//JavaScript Type Conversion
+
+Number()		Returns a number, converted from its argument
+parseFloat()	Parses a string and returns a floating point number
+parseInt()		Parses a string and returns an integer
+toExponential()	Returns a string, with a number rounded and written using exponential notation.
+toFixed()	Returns a string, with a number rounded and written with a specified number of decimals.
+toPrecision()	Returns a string, with a number written with a specified length
+
+//JavaScript Regular Expressions
+syntax:-/pattern/modifiers;
+
+Modifier	Description	
+i	Perform case-insensitive matching	
+g	Perform a global match (find all matches rather than stopping after the first match)	
+m	Perform multiline matching
+
+Expression	Description	
+[abc]	Find any of the characters between the brackets	
+[0-9]	Find any of the digits between the brackets	
+(x|y)	Find any of the alternatives separated with
+
+Metacharacter	Description	
+\d	Find a digit	
+\s	Find a whitespace character	
+\b	Find a match at the beginning of a word like this: \bWORD, or at the end of a word like this: WORD\b	
+\uxxxx	Find the Unicode character specified by the hexadecimal number xxxx	
+Quantifiers define quantities:
+
+Quantifier	Description	
+n+	Matches any string that contains at least one n
+n*	Matches any string that contains zero or more occurrences of n
+n?	Matches any string that contains zero or one occurrences of n
+
+//JavaScript has 3 types of scope:
+
+Block scope
+Function scope
+Local Scope
+Global scope
+
+//JavaScript Declarations are Hoisted
+In JavaScript, a variable can be declared after it has been used.
+In other words; a variable can be used before it has been declared.
+
+//strict mode
+It is not a statement, but a literal expression, ignored by earlier versions of JavaScript.
+
+The purpose of "use strict" is to indicate that the code should be executed in "strict mode".
+
+With strict mode, you can not, for example, use undeclared variables.
+
+//JavaScript JSON
+JSON is a format for storing and transporting data.
+JSON is often used when data is sent from a server to a web page.
+JSON stands for JavaScript Object Notation
+JSON is a lightweight data interchange format
+JSON is language independent *
+JSON is "self-describing" and easy to understand
+
+//constructor
+It is considered good practice to name constructor functions with an upper-case first letter.
+
+//JavaScript Closures
+elacical scope
+JavaScript variables can belong to the local or global scope.
+
+Global variables can be made local (private) with closures.
+
+Remember self-invoking functions? What does this function do?
+
+
