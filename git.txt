@@ -24,9 +24,15 @@ git push -u origin master
 =============remove origin==================
 git remote rm origin
 
+==========chack all commint=================
+git log 
 
+============to chack diffrent==============
+git diff
 
-git branch -m main raval
-git fetch origin
-git branch -u origin/raval raval
-git remote set-head origin -a
+git diff --stage //it campare last comment
+
+==============.gitignore============
+mylogs.log //ignore files
+/mylogs.log //not ignore thos file who inside the folder
+ignore/  //ignore folder
